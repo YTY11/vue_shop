@@ -1,0 +1,7 @@
+//  #去掉代码结尾的分号 
+    "semi": false,
+    //  #使用單引号替代双引号 
+    "singleQuote": true,
+    {
+      
+    }

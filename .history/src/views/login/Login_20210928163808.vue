@@ -1,0 +1,39 @@
+<template>
+  <div class="login">
+    <div class="login-win">
+      <div class="login-icon">
+        <img src="~@/assets/logo.png" alt="" />
+      </div>
+      <el-form class="login-form">
+        <el-form-item>
+          <el-input prefix-icon="iconfont .icon-yonghutianchong" v-model="userData.userName"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-input type='password' v-model="userData.passWord"></el-input>
+        </el-form-item>
+        <el-form-item class="login-button">
+          <el-button type="primary">登录</el-button>
+          <el-button type="info">重置</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Login',
+  data() {
+    return {
+      userData: {
+        userName: 'admin',
+        passWord: 'admin'
+      }
+    }
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+@import '@/style/login/login.scss';
+</style>

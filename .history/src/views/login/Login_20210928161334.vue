@@ -1,0 +1,28 @@
+<template>
+  <div class="login">
+    <div class="login-win">
+      <div class="login-icon">
+        <img src="~@/assets/logo.png" alt="" />
+      </div>
+      <el-form class="login-form">
+        <el-form-item>
+          <el-input></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-input></el-input>
+        </el-form-item>
+         <el-button type="primary">主要按钮</el-button>
+  <el-button type="success">成功按钮</el-button>
+  <el-button type="info">信息按钮</el-button>
+      </el-form>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {}
+</script>
+
+<style lang="scss" scoped>
+@import '@/style/login/login.scss';
+</style>
