@@ -1,12 +1,21 @@
 <template>
   <div class="home">
-    <h2>home</h2>
+    <el-button type="info" @click="logout">退出</el-button>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Home',
-  components: {}
+  components: {},
+  methods: {
+    // 退出
+    logout() {
+      this.$store.dispatch('user/logout').then((res) => {
+        this.$message.success(res)
+        this.$router.push('/login')
+      })
+    }
+  }
 }
 </script>

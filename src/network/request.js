@@ -5,7 +5,7 @@ export function request(config) {
   // eslint-disable-next-line new-cap
   const instance = new axios.create({
     baseURL: 'https://lianghj.top:8888/api/private/v1/',
-    timeOut: 5000,
+    timeout: 5000,
     method: config.method === undefined ? 'get' : config.method
   })
   // axios 请求拦截

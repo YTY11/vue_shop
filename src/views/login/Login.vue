@@ -75,7 +75,8 @@ export default {
         username: [{ validator: validateName, trigger: 'blur' }],
         // 密码规则
         password: [{ validator: validatePass, trigger: 'blur' }]
-      }
+      },
+      redirect: ''
     }
   },
   methods: {
@@ -85,34 +86,34 @@ export default {
     },
     // 登录
     login() {
+      // 显示加载层
+      const loading = this.$loading({
+        lock: true,
+        text: '登录中...',
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.7)'
+      })
       this.$refs.loginForm.validate((valid) => {
         // 数据符合规则，登录判断
         if (valid) {
-          loginFun(this.userData)
+          this.$store
+            .dispatch('user/login', this.userData)
             .then((res) => {
-              // 成功给出弹框提示，存储token
-              if (res.meta.status === 200) {
-                this.$message({
-                  message: res.meta.msg,
-                  type: 'success'
-                })
-                // res.data.token
-                this.$router.push('/home')
-              } else {
-                // 失败给出弹框提示
-                this.$message({
-                  message: res.meta.msg,
-                  type: 'error'
-                })
-              }
+              // 关闭加载层 给出提示
+              loading.close()
+              this.$message({
+                message: res,
+                type: 'success'
+              })
+              this.$router.push('/')
             })
             .catch((err) => {
-              // 失败给出弹框提示
+              // 关闭加载层 给出提示
+              loading.close()
               this.$message({
-                message: '登录失败',
-                type: 'error'
+                message: err,
+                type: 'success'
               })
-              console.log(err)
             })
         }
       })

@@ -1,22 +1,32 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-const Login = () => import('@/views/login/Login')
-const Home = () => import('@/views/home/Home')
+// 页面布局
+import Layout from '@/layout'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/login',
-    name: 'Login',
-    component: Login
+    path: '/',
+    redirect: '/home'
   },
   {
-    path: '/home',
-    name: 'Home',
-    component: Home
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/login/Login')
+  },
+  {
+    path: '/',
+    redirect: '/home',
+    component: Layout,
+    children: [
+      {
+        path: '/home',
+        name: 'Home',
+        component: () => import('@/views/home/Home')
+      }
+    ]
   }
-
 ]
 
 const router = new VueRouter({

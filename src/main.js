@@ -8,7 +8,8 @@ import 'normalize.css/normalize.css'
 import '@/plugins/element'
 // 引入字体图标
 import '@/assets/font/iconfont.css'
-
+// 引入permission
+import './permission'
 Vue.config.productionTip = false
 
 new Vue({
