@@ -9,4 +9,7 @@
     width: 100vw;
     height: 100vh;
   }
+   .el-scrollbar__wrap {
+    overflow: auto !important;
+  }
 </style>
