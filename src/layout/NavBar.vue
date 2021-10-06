@@ -7,9 +7,9 @@
         :class="{ rotate: isCollapse }"
         @click="collapse"
       ></div>
-       <!-- 面包屑 -->
-        <BreadCrumb  class="crumb"/>
-        <!-- 右侧头像区域 -->
+      <!-- 面包屑 -->
+      <BreadCrumb class="crumb"/>
+      <!-- 右侧头像区域 -->
       <div class="header-top-right">
         <!-- 头像 下拉菜单 -->
         <el-dropdown trigger="click">
@@ -67,7 +67,7 @@ export default {
   .header-top {
     line-height: 50px;
     .crumb {
-         line-height: 50px;
+      line-height: 50px;
       float: left;
     }
     .open-icon {

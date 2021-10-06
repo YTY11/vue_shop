@@ -3,7 +3,7 @@
     <img src="~@/assets/img/logo.png" alt="" />
     <!-- 菜单栏收起时不显示 -->
     <transition name="sidebarLogoFade">
-      <span v-if="!isCollapse">电商后台管理系统</span>
+      <span v-if="!isCollapse">后台管理系统</span>
     </transition>
   </div>
 </template>
@@ -34,13 +34,14 @@ export default {
   font-size: 16px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     background-color: #fafafa;
     overflow: hidden;
+    margin-right: 10px;
   }
 }
 </style>

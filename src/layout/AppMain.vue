@@ -14,7 +14,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.el-main{
-  padding: 10px;
+.el-scrollbar {
+  background-color: #eaedf1;
+  height: 100%;
+  .el-main {
+    padding: 15px;
+  }
 }
 </style>

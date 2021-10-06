@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { Form, FormItem, Input, Button, Message, Loading, Container, Aside, Header, Main, Scrollbar, Menu, Submenu, MenuItemGroup, MenuItem, Tooltip, Dropdown, DropdownMenu, DropdownItem, Breadcrumb, BreadcrumbItem } from 'element-ui'
+import { Form, FormItem, Input, Button, Message, Loading, Container, Aside, Header, Main, Scrollbar, Menu, Submenu, MenuItemGroup, MenuItem, Tooltip, Dropdown, DropdownMenu, DropdownItem, Breadcrumb, BreadcrumbItem, Card } from 'element-ui'
 
 Vue.use(Form)
 Vue.use(FormItem)
@@ -20,6 +20,7 @@ Vue.use(DropdownMenu)
 Vue.use(DropdownItem)
 Vue.use(Breadcrumb)
 Vue.use(BreadcrumbItem)
+Vue.use(Card)
 
 Vue.prototype.$message = Message
 Vue.prototype.$loading = Loading.service

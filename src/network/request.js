@@ -11,6 +11,8 @@ export function request(config) {
   // axios 请求拦截
   // 就是在请求数据时对数据做一些处理
   instance.interceptors.request.use(config => {
+    // 登录授权 请求验证是否有token  需要授权的 API ，必须在请求头中使用 `Authorization` 字段提供 `token` 令牌
+    config.headers.Authorization = window.sessionStorage.getItem('VUE_SHOP_TOKEN')
     return config
   }, err => { console.log(err) })
 

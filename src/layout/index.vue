@@ -1,8 +1,18 @@
 <template>
   <div class="layout">
+    <!-- 移动模式时菜单栏展开后的模态框 -->
+    <div
+      @click="collapse"
+      :class="{ mobile: device === 'mobile' && !isCollapse }"
+    ></div>
     <el-container>
       <!-- 菜单栏导航 -->
-      <NavMenu />
+      <NavMenu :listMenus='listMenus'
+        :class="{
+          'nav-menu': device === 'mobile',
+          'open-menu': device === 'mobile' && !isCollapse
+        }"
+      />
       <el-container class="right-container">
         <!-- 头部 -->
         <NavBar />
@@ -20,12 +30,55 @@ import NavMenu from './childComps'
 import AppMain from './AppMain.vue'
 // 头部组件
 import NavBar from './NavBar.vue'
+// 模式切换
+import ResizeHander from './mixin/resizeHander'
+import { mapGetters } from 'vuex'
+
+// 网络数据
+import { getMenuData } from '@/api/menu'
 export default {
   name: 'Layout',
+  mixins: [ResizeHander],
+  data() {
+    return {
+      listMenus: []
+    }
+  },
   components: {
     NavMenu,
     AppMain,
     NavBar
+  },
+  computed: {
+    ...mapGetters(['isCollapse', 'device'])
+  },
+  created() {
+    this.getMenuData()
+  },
+  methods: {
+    // 控制菜单栏开合
+    collapse() {
+      this.$store.dispatch('app/setIsCollapse')
+    },
+
+    // 获取菜单栏数据
+    getMenuData() {
+      getMenuData()
+        .then((res) => {
+          if (res.meta.status === 200) {
+            // 获取数据成功
+            this.$message.success(res.meta.msg)
+            this.listMenus = res.data
+          } else {
+            // 获取数据失败
+            this.$message.error(res.meta.msg)
+          }
+        })
+        .catch((err) => {
+          this.$message.error(err)
+          console.log(err)
+        })
+    }
   }
 }
 </script>
@@ -42,6 +95,25 @@ export default {
     // header 固定
     // display: block;
     overflow: auto;
+  }
+  .nav-menu {
+    position: absolute;
+    height: 100%;
+    z-index: 2;
+    left: -200px;
+    transition: left 0.28s;
+  }
+  .open-menu {
+    left: 0;
+  }
+  .mobile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.3);
   }
 }
 </style>

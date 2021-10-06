@@ -3,6 +3,10 @@ import { getToken } from '@/utiles/user'
 
 // 设置导航守卫 有token 直接进入首页或指定的页面（无法进入登录页面）
 router.beforeEach((to, from, next) => {
+  /* 路由发生变化修改页面title */
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
   // 获取token
   const TOKEN = getToken()
   if (TOKEN) {

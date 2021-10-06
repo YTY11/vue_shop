@@ -4,16 +4,30 @@ import VueRouter from 'vue-router'
 import Layout from '@/layout'
 
 Vue.use(VueRouter)
-
+// 解决 连续点击相同路由导致报错问题 不解决也没啥影响 就是控制台 爆红 看着 烦
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 const routes = [
-  {
-    path: '/',
-    redirect: '/home'
-  },
   {
     path: '/login',
     name: 'Login',
     component: () => import('@/views/login/Login')
+  },
+  {
+    path: '/users',
+    redirect: '/users',
+    component: Layout,
+    meta: { title: '用户管理' },
+    children: [
+      {
+        path: '/users',
+        name: 'Users',
+        component: () => import('@/views/users/Users'),
+        meta: { title: '用户列表' }
+      }
+    ]
   },
   {
     path: '/',
@@ -23,7 +37,8 @@ const routes = [
       {
         path: '/home',
         name: 'Home',
-        component: () => import('@/views/home/Home')
+        component: () => import('@/views/home/Home'),
+        meta: { title: '首页' }
       }
     ]
   }
