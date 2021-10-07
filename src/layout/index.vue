@@ -75,7 +75,7 @@ export default {
           }
         })
         .catch((err) => {
-          this.$message.error(err)
+          this.$message.error('请检查网络')
           console.log(err)
         })
     }
@@ -110,7 +110,7 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1;
+    z-index: 2;
     height: 100%;
     width: 100%;
     background-color: rgba($color: #000000, $alpha: 0.3);

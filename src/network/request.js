@@ -1,6 +1,8 @@
 // 引入axios
 import axios from 'axios'
-
+import NProgress from 'nprogress' // 进度条
+import 'nprogress/nprogress.css' // 进度条样式
+NProgress.configure({ showSpinner: false })
 export function request(config) {
   // eslint-disable-next-line new-cap
   const instance = new axios.create({
@@ -11,6 +13,7 @@ export function request(config) {
   // axios 请求拦截
   // 就是在请求数据时对数据做一些处理
   instance.interceptors.request.use(config => {
+    NProgress.start()
     // 登录授权 请求验证是否有token  需要授权的 API ，必须在请求头中使用 `Authorization` 字段提供 `token` 令牌
     config.headers.Authorization = window.sessionStorage.getItem('VUE_SHOP_TOKEN')
     return config
@@ -19,6 +22,7 @@ export function request(config) {
   // axios 响应拦截
   // 对返回的数据做一些处理
   instance.interceptors.response.use(res => {
+    NProgress.done()
     return res.data
   }, err => { console.log(err) })
 

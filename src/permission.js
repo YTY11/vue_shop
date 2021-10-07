@@ -1,8 +1,11 @@
 import router from './router'
 import { getToken } from '@/utiles/user'
-
+import NProgress from 'nprogress' // 进度条
+import 'nprogress/nprogress.css' // 进度条样式
+NProgress.configure({ showSpinner: false })
 // 设置导航守卫 有token 直接进入首页或指定的页面（无法进入登录页面）
 router.beforeEach((to, from, next) => {
+  NProgress.start()
   /* 路由发生变化修改页面title */
   if (to.meta.title) {
     document.title = to.meta.title
@@ -17,4 +20,7 @@ router.beforeEach((to, from, next) => {
     if (to.path === '/login') next()
     else next('/login')
   }
+})
+router.afterEach(() => {
+  NProgress.done()
 })

@@ -107,12 +107,12 @@ export default {
               })
               this.$router.push('/')
             })
-            .catch((err) => {
+            .catch(() => {
               // 关闭加载层 给出提示
               loading.close()
               this.$message({
-                message: err,
-                type: 'success'
+                message: '请检查网络',
+                type: 'error'
               })
             })
         }

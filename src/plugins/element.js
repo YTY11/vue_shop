@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { Form, FormItem, Input, Button, Message, Loading, Container, Aside, Header, Main, Scrollbar, Menu, Submenu, MenuItemGroup, MenuItem, Tooltip, Dropdown, DropdownMenu, DropdownItem, Breadcrumb, BreadcrumbItem, Card } from 'element-ui'
+import { Form, FormItem, Input, Button, Message, Loading, Container, Aside, Header, Main, Scrollbar, Menu, Submenu, MenuItemGroup, MenuItem, Tooltip, Dropdown, DropdownMenu, DropdownItem, Breadcrumb, BreadcrumbItem, Card, Table, TableColumn, Row, Col, Switch, Pagination, Dialog, MessageBox, Select, Option } from 'element-ui'
 
 Vue.use(Form)
 Vue.use(FormItem)
@@ -21,6 +21,16 @@ Vue.use(DropdownItem)
 Vue.use(Breadcrumb)
 Vue.use(BreadcrumbItem)
 Vue.use(Card)
+Vue.use(Table)
+Vue.use(TableColumn)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Switch)
+Vue.use(Pagination)
+Vue.use(Dialog)
+Vue.use(Select)
+Vue.use(Option)
 
 Vue.prototype.$message = Message
+Vue.prototype.$confirm = MessageBox.confirm
 Vue.prototype.$loading = Loading.service

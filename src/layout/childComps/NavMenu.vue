@@ -69,7 +69,6 @@ export default {
     },
     // 默认选中项
     activeMenu() {
-      console.log(typeof this.$route.path)
       return this.$route.path
     }
   },
