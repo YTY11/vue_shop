@@ -58,6 +58,7 @@ export const userAddFormRulesMixin = {
     }
   }
 }
+// 角色信息校验规则
 export const rolesFormRulesMixin = {
   data() {
     return {

@@ -60,6 +60,7 @@ export default {
 
 <style lang="scss" scoped>
 .el-header {
+  z-index: 1;
   height: 50px !important;
   padding-left: 0;
   box-shadow: 0px 0px 7px -2px #ccc;

@@ -124,16 +124,16 @@
         :rules="addFormRules"
       >
         <el-form-item prop="username" label="用户名">
-          <el-input class="handel-input" v-model="addUserInfo.username"></el-input>
+          <el-input class="handel-input" placeholder="请输入内容" v-model="addUserInfo.username"></el-input>
         </el-form-item>
         <el-form-item prop="password" label="密码">
-          <el-input class="handel-input" v-model="addUserInfo.password"></el-input>
+          <el-input class="handel-input" placeholder="请输入内容" v-model="addUserInfo.password"></el-input>
         </el-form-item>
         <el-form-item prop="email" label="邮箱">
-          <el-input class="handel-input" v-model="addUserInfo.email"></el-input>
+          <el-input class="handel-input" placeholder="请输入内容" v-model="addUserInfo.email"></el-input>
         </el-form-item>
         <el-form-item prop="mobile" label="手机">
-          <el-input class="handel-input" v-model="addUserInfo.mobile"></el-input>
+          <el-input class="handel-input" placeholder="请输入内容" v-model="addUserInfo.mobile"></el-input>
         </el-form-item>
       </el-form>
       <span slot="footer">
@@ -398,7 +398,7 @@ export default {
       if (formName) {
         this.$refs[formName].resetFields()
       }
-      this.newRole = ''
+      this.roleId = ''
     }
   }
 }

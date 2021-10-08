@@ -2,7 +2,7 @@
 import axios from 'axios'
 import NProgress from 'nprogress' // 进度条
 import 'nprogress/nprogress.css' // 进度条样式
-NProgress.configure({ showSpinner: false })
+NProgress.configure({ showSpinner: false }) // 去除右上角圆环进度条
 export function request(config) {
   // eslint-disable-next-line new-cap
   const instance = new axios.create({

@@ -81,6 +81,7 @@ export default {
     select(index, path) {
       // 使用事件总线传数据
       this.$bus.$emit('listPath', path)
+      console.log(index, path)
       this.$router.push(index)
       // 如果是移动端选择菜单后 菜单收起
       if (this.device === 'mobile') {

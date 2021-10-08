@@ -2,7 +2,7 @@ import router from './router'
 import { getToken } from '@/utiles/user'
 import NProgress from 'nprogress' // 进度条
 import 'nprogress/nprogress.css' // 进度条样式
-NProgress.configure({ showSpinner: false })
+NProgress.configure({ showSpinner: false })// 去除右上角圆环进度条
 // 设置导航守卫 有token 直接进入首页或指定的页面（无法进入登录页面）
 router.beforeEach((to, from, next) => {
   NProgress.start()

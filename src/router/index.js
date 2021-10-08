@@ -16,8 +16,20 @@ const routes = [
     component: () => import('@/views/login/Login')
   },
   {
+    path: '/',
+    redirect: '/home',
+    component: Layout,
+    children: [
+      {
+        path: '/home',
+        name: 'Home',
+        component: () => import('@/views/home/Home'),
+        meta: { title: '首页' }
+      }
+    ]
+  },
+  {
     path: '/users',
-    redirect: '/users',
     component: Layout,
     meta: { title: '用户管理' },
     children: [
@@ -30,15 +42,21 @@ const routes = [
     ]
   },
   {
-    path: '/',
-    redirect: '/home',
+    path: '',
     component: Layout,
+    meta: { title: '权限管理' },
     children: [
       {
-        path: '/home',
-        name: 'Home',
-        component: () => import('@/views/home/Home'),
-        meta: { title: '首页' }
+        path: '/roles',
+        name: 'Roles',
+        component: () => import('@/views/permission/Roles'),
+        meta: { title: '角色列表' }
+      },
+      {
+        path: '/rights',
+        name: 'rights',
+        component: () => import('@/views/permission/Rights'),
+        meta: { title: '权限列表' }
       }
     ]
   }
