@@ -211,7 +211,6 @@ import {
   getListPermission,
   setPermission
 } from '@/api/permission/roles'
-import LoginVue from '../login/Login.vue'
 export default {
   name: 'Roles',
   mixins: [rolesFormRulesMixin],

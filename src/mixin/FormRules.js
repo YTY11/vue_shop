@@ -125,8 +125,28 @@ export const paramsFormRulesMixin = {
     }
   }
 }
+// 添加商品信息校验规则
 export const goodsAddFormRulesMixin = {
   data() {
+    // 自定义规则
+    const valiGoodsPrice = (rule, value, callback) => {
+      if (value <= 0) {
+        callback(new Error('请输入合法的商品价格'))
+      }
+      callback()
+    }
+    const valiGoodsWeight = (rule, value, callback) => {
+      if (value <= 0) {
+        callback(new Error('请输入合法的商品重量'))
+      }
+      callback()
+    }
+    const valiGoodsNumber = (rule, value, callback) => {
+      if (value <= 0) {
+        callback(new Error('请输入合法的商品数量'))
+      }
+      callback()
+    }
     return {
       // 添加商品验证规则
       addFormRules: {
@@ -140,10 +160,17 @@ export const goodsAddFormRulesMixin = {
           }
         ],
         goods_price: [
-          { required: true, message: '请输入商品的价格', trigger: 'blur' }
+          { required: true, message: '请输入商品的价格', trigger: 'blur' },
+          { validator: valiGoodsPrice, trigger: 'blur' }
         ],
-        goods_weight: [{ required: true, message: '请输入商品的重量', trigger: 'blur' }],
-        goods_number: [{ required: true, message: '请输入商品的数量', trigger: 'blur' }],
+        goods_weight: [
+          { required: true, message: '请输入商品的重量', trigger: 'blur' },
+          { validator: valiGoodsWeight, trigger: 'blur' }
+        ],
+        goods_number: [
+          { required: true, message: '请输入商品的数量', trigger: 'blur' },
+          { validator: valiGoodsNumber, trigger: 'blur' }
+        ],
         goods_cat: [{ required: true, message: '请选择商品分类', trigger: 'blur' }]
       }
     }

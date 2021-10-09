@@ -59,6 +59,38 @@ const routes = [
         meta: { title: '权限列表' }
       }
     ]
+  },
+  {
+    path: '',
+    component: Layout,
+    meta: { title: '商品管理' },
+    children: [
+      {
+        path: '/goods',
+        name: 'Goods',
+        component: () => import('@/views/goods/Goods'),
+        meta: { title: '商品列表' }
+      },
+      {
+        path: '/params',
+        name: 'Params',
+        component: () => import('@/views/goods/Params'),
+        meta: { title: '分类参数' }
+      },
+      {
+        path: '/categories',
+        name: 'Categories',
+        component: () => import('@/views/goods/Categories'),
+        meta: { title: '商品分类' }
+      },
+      {
+        path: '/goods/addGoods',
+        name: 'AddGoods',
+        component: () => import('@/views/goods/AddGoods'),
+        meta: { title: '添加商品' }
+      }
+
+    ]
   }
 ]
 

@@ -15,4 +15,13 @@
 #nprogress .bar {
      background: #63E81A !important; //自定义颜色
   }
+.el-tabs__item{
+padding: 0 20px 0 0 !important;
+}
+.el-cascader-panel{
+  height: 300px;
+}
+.ql-container {
+    min-height: 350px !important;
+  }
 </style>

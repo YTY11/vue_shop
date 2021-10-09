@@ -218,8 +218,6 @@ export default {
   mixins: [userAddFormRulesMixin],
   data() {
     return {
-      // 搜索内容
-      seekData: '',
       // 用戶列表数据
       tableData: [],
       // 获取用户列表的参数对象

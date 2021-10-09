@@ -99,7 +99,7 @@ export default {
   .nav-menu {
     position: absolute;
     height: 100%;
-    z-index: 2;
+    z-index: 3;
     left: -200px;
     transition: left 0.28s;
   }
