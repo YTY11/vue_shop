@@ -105,20 +105,14 @@ export const rolesFormRulesMixin = {
     }
   }
 }
+// 参数添加 修改校验规则
 export const paramsFormRulesMixin = {
   data() {
     return {
-      // 添加表单的验证规则
-      addFormRules: {
+      // 表单的验证规则
+      formRules: {
         attr_name: [
-          { required: true, message: '请输入添加的分类', trigger: 'blur' },
-          { min: 2, max: 10, message: '长度在 2 到 10 个字符', trigger: 'blur' }
-        ]
-      },
-      // 修改表单的验证
-      editFormRules: {
-        attr_name: [
-          { required: true, message: '请输入修改的信息', trigger: 'blur' },
+          { required: true, message: '请输入内容', trigger: 'blur' },
           { min: 2, max: 10, message: '长度在 2 到 10 个字符', trigger: 'blur' }
         ]
       }

@@ -72,7 +72,6 @@
         <el-tab-pane label="商品内容">
           <!-- 富文本插件 -->
           <quill-editor v-model="addForm.goods_introduce"></quill-editor>
-          <el-button class="button-top" type="primary" size="small" @click="$router.push('/goods')">返回商品列表</el-button>
           <el-button class="button-top" type="primary" size="small" @click="submitClick">提交</el-button>
         </el-tab-pane>
       </el-tabs>
@@ -263,6 +262,8 @@ export default {
       const { meta } = await addGoods(formData)
       if (meta.status !== 201) return this.$message.error('添加商品失败')
       this.$message.success('添加商品成功')
+      // 添加成功后返回商品列表页
+      this.$router.push('/goods')
     }
   }
 }
