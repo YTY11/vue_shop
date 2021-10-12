@@ -170,3 +170,13 @@ export const goodsAddFormRulesMixin = {
     }
   }
 }
+// 分类添加 修改校验规则
+export const catRules = {
+  data() {
+    return {
+      formRules: {
+        cat_name: [{ required: true, message: '请输入内容', trigger: 'blur' }]
+      }
+    }
+  }
+}
