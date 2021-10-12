@@ -45,7 +45,6 @@ export default {
       if (path[1] && path[1].path === '/goods/addGoods') {
         this.listPath.splice(2, 0, { path: '/goods', meta: { title: '商品列表' } })
       }
-      console.log(this.listPath)
     },
     // 跳转新页面
     goNewPage(item) {

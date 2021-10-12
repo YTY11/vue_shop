@@ -91,6 +91,19 @@ const routes = [
       }
 
     ]
+  },
+  {
+    path: '',
+    component: Layout,
+    meta: { title: '订单管理' },
+    children: [
+      {
+        path: '/orders',
+        name: 'Orders',
+        component: () => import('@/views/orders/Orders'),
+        meta: { title: '订单列表' }
+      }
+    ]
   }
 ]
 

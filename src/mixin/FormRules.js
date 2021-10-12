@@ -180,3 +180,14 @@ export const catRules = {
     }
   }
 }
+// 订单 修改地址校验规则
+export const modifyOrdersRules = {
+  data() {
+    return {
+      modifyFormRules: {
+        address1: [{ required: true, message: '请选择城市', trigger: 'blur' }],
+        address2: [{ required: true, message: '请填写详细地址', trigger: 'blur' }]
+      }
+    }
+  }
+}
