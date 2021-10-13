@@ -33,5 +33,6 @@ export default {
   z-index: 1;
   background-color: #545C64;
   box-shadow: 0px 0px 15px -4px;
+  overflow: initial !important;
 }
 </style>

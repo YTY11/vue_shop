@@ -20,3 +20,10 @@ export function dateFormat(fmt, date) {
   ;
   return fmt
 }
+// 获取今天星期几
+export function getWeekDate(date) {
+  const day = date.getDay()
+  const weeks = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
+  const week = weeks[day]
+  return week
+};

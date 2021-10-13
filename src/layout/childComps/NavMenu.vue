@@ -35,6 +35,10 @@
           </template>
         </el-menu-item>
       </el-submenu>
+      <el-menu-item index="/reports">
+        <i class="iconfont icon-shujutongji"></i>
+        <span slot="title">数据可视化</span>
+      </el-menu-item>
     </el-menu>
   </el-aside>
 </template>

@@ -104,6 +104,11 @@ const routes = [
         meta: { title: '订单列表' }
       }
     ]
+  },
+  {
+    path: '/reports',
+    component: () => import('@/views/reports/Reports'),
+    meta: { title: '数据可视化' }
   }
 ]
 

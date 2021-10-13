@@ -69,6 +69,7 @@ export default {
             // 获取数据成功
             this.$message.success(res.meta.msg)
             this.listMenus = res.data
+            this.listMenus.pop() // 删除最后一个菜单 自定义
           } else {
             // 获取数据失败
             this.$message.error(res.meta.msg)
