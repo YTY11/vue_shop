@@ -228,7 +228,7 @@ export default {
         ]
       },
       // echarts
-      myChart: [],
+      myChart: '',
       // 滚动表格数据
       tableData: {
         // 表头
@@ -277,18 +277,16 @@ export default {
     window.removeEventListener('resize', this.resizeEcharts)
   },
   mounted() {
-    this.setOneChart('chartLine', this.oneOptions)
+    this.setOneChart()
   },
   methods: {
-    setOneChart(ref, option) {
-      this.myChart.push(this.$echarts.init(this.$refs[ref]))
-      this.myChart[this.myChart.length - 1].setOption(option)
+    setOneChart() {
+      this.myChart = this.$echarts.init(this.$refs.chartLine)
+      this.myChart.setOption(this.oneOptions)
     },
     // 监听页面变化 ecahrts 重绘
     resizeEcharts() {
-      this.myChart.forEach((imte) => {
-        imte.resize()
-      })
+      this.myChart.resize()
     }
   }
 }
@@ -315,8 +313,7 @@ export default {
     width: 100%;
   }
   .two-border {
-    margin-top: 3%;
-    height: 62%;
+    height: calc(65% - 10px);
   }
   .scrollBoard{
     width: calc(100% - 40px);
