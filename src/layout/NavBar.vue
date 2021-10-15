@@ -9,17 +9,22 @@
       ></div>
       <!-- 面包屑 -->
       <BreadCrumb class="crumb"/>
-      <!-- 右侧头像区域 -->
+      <!-- 右侧 -->
       <div class="header-top-right">
+        <!-- 全屏按钮 -->
+        <div class="open-icon iconfont"
+        :class="[!screenfullBut ? 'icon-quanping': 'icon-tuichuquanping']"
+        @click="fullscreen"
+      ></div>
         <!-- 头像 下拉菜单 -->
         <el-dropdown trigger="click">
           <div class="el-dropdown-link">
-            <img src="~@/assets/img/user_icon.gif" alt="" /><i
-              class="el-icon-arrow-down el-icon--right"
-            ></i>
+            <img src="~@/assets/img/user_icon.gif" alt="" />
+            <span>admin</span>
+            <i class="el-icon-arrow-down el-icon--right"></i>
           </div>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>个人中心</el-dropdown-item>
+            <el-dropdown-item @click.native="gitee">码云地址</el-dropdown-item>
             <el-dropdown-item divided @click.native="logout"
               >退出登录</el-dropdown-item
             >
@@ -34,10 +39,17 @@
 import { mapGetters } from 'vuex'
 // 面包屑导航
 import BreadCrumb from '@/components/breadcrumb/BreadCrumb'
+// 引入全屏插件
+import screenfull from 'screenfull'
 export default {
   name: 'NavBar',
   components: {
     BreadCrumb
+  },
+  data() {
+    return {
+      screenfullBut: false // 全屏按钮状态
+    }
   },
   computed: {
     ...mapGetters(['isCollapse'])
@@ -47,12 +59,35 @@ export default {
     collapse() {
       this.$store.dispatch('app/setIsCollapse')
     },
+    // 全屏功能
+    fullscreen() {
+      if (!screenfull.isEnabled) {
+        this.$notification.open({
+          message: '温馨提示',
+          description:
+            '您的浏览器无法使用全屏功能，请更换谷歌浏览器或者请手动点击F11按钮全屏展示！',
+          duration: 10,
+          placement: 'bottomLeft'
+        })
+        return false
+      }
+      screenfull.toggle()
+      if (screenfull.isFullscreen) {
+        this.screenfullBut = false
+      } else {
+        this.screenfullBut = true
+      }
+    },
     // 退出
     logout() {
       this.$store.dispatch('user/logout').then((res) => {
         this.$message.success(res)
         this.$router.push('/login')
       })
+    },
+    // gitee 仓库地址
+    gitee() {
+      window.open('https://gitee.com/yty1998/vue_shop.git')
     }
   }
 }
@@ -94,11 +129,18 @@ export default {
     .header-top-right {
       float: right;
       .el-dropdown-link {
+        display: flex;
+        span{
+          margin-left: 5px;
+        }
         img {
           width: 40px;
           height: 40px;
           margin-top: 5px;
           border-radius: 10px;
+        }
+        .el-icon--right{
+          margin: auto;
         }
         &:hover {
           cursor: pointer;
