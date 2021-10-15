@@ -1,28 +1,40 @@
 <template>
   <div class="center">
-    <div class="map" ref="chinaMap">
-    </div>
-    <div class="center-bottom">
+    <dv-decoration-12 class="decoration-12 animate__animated animate__bounceInDown animate__delay-3s animate__slow" :color="['#47DAE8', 'green']" />
+    <div class="map animate__animated animate__zoomIn animate__delay-3s animate__slow" ref="chinaMap"></div>
+    <div class="center-bottom animate__animated animate__bounceInDown animate__delay-2s animate__slow">
       <el-row :gutter="20">
         <el-col :span="8">
-          <dv-border-box-7 class="border-box-7" :color="['#35467E']"></dv-border-box-7>
+          <CenterItemImg>
+            <img src="~@/assets/img/img.png" alt="" />
+          </CenterItemImg>
         </el-col>
         <el-col :span="8">
-          <dv-border-box-7 class="border-box-7" :color="['#35467E']"></dv-border-box-7>
+            <CenterItemImg p1="视频转换流量" p2="1000 点击/个">
+              <img src="~@/assets/img/video.png" alt="" />
+            </CenterItemImg>
         </el-col>
         <el-col :span="8">
-          <dv-border-box-7 class="border-box-7" :color="['#35467E']"></dv-border-box-7>
+            <CenterItemImg p1="文章转换流量" p2="3000 点击/篇">
+              <img src="~@/assets/img/text.png" alt="" />
+            </CenterItemImg>
         </el-col>
       </el-row>
       <el-row :gutter="20">
         <el-col :span="8">
-          <dv-border-box-7 class="border-box-7 box-top" :color="['#35467E']"></dv-border-box-7>
+            <CenterItemImg p1="安全服务流量" p2="1500 攻击/小时">
+              <img src="~@/assets/img/anquan.png" alt="" />
+            </CenterItemImg>
         </el-col>
         <el-col :span="8">
-          <dv-border-box-7 class="border-box-7 box-top" :color="['#35467E']"></dv-border-box-7>
+            <CenterItemImg p1="通讯流量" p2="5500 M/分">
+              <img src="~@/assets/img/session.png" alt="" />
+            </CenterItemImg>
         </el-col>
         <el-col :span="8">
-          <dv-border-box-7 class="border-box-7 box-top" :color="['#35467E']"></dv-border-box-7>
+            <CenterItemImg p1="日常流量" p2="300 访问/小时">
+              <img src="~@/assets/img/tongji.png" alt="" />
+            </CenterItemImg>
         </el-col>
       </el-row>
     </div>
@@ -33,8 +45,15 @@
 // 数据
 import { citys, dataList } from '@/demoData/mapData'
 import '@/utiles/china'
+
+// 子组件
+import CenterItemImg from '@/views/reports/childComps/CenterItemImg'
+
 export default {
   name: 'Center',
+  components: {
+    CenterItemImg
+  },
   data() {
     return {
       // 中国地图数据
@@ -103,7 +122,8 @@ export default {
             },
             data: citys
           },
-          { // 飞线样式及来往地点
+          {
+            // 飞线样式及来往地点
             name: '线路',
             type: 'lines',
             coordinateSystem: 'geo',
@@ -179,24 +199,27 @@ export default {
 .center {
   height: calc(100% - 10px);
   width: 100%;
-  .map{
+  .decoration-12{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+  }
+  .map {
     width: 100%;
     height: 70%;
   }
-  .center-bottom{
+  .center-bottom {
     text-align: center;
     width: 98%;
     height: 30%;
+    box-sizing: border-box;
     margin: auto;
-    .el-row{
-      margin: 0 !important;
+    .el-row {
+      margin: 10px 0 !important;
       width: 100%;
-      height: 43%;
-      .el-col{
+      height: calc(50% - 15px);
+      .el-col {
         height: 100%;
-        .box-top{
-          margin-top: calc(14% - 10px);
-        }
       }
     }
   }

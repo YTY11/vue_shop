@@ -6,7 +6,7 @@ NProgress.configure({ showSpinner: false }) // 去除右上角圆环进度条
 export function request(config) {
   // eslint-disable-next-line new-cap
   const instance = new axios.create({
-    baseURL: 'https://lianghj.top:8888/api/private/v1/',
+    baseURL: 'http://shop.api.yty1999.top:8889/api/private/v1/',
     timeout: 5000,
     method: config.method === undefined ? 'get' : config.method
   })

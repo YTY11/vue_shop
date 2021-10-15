@@ -1,7 +1,7 @@
 <template>
   <div class="left">
     <!-- echarts 折线图 -->
-    <dv-border-box-12 class="one-border animate__animated  animate__lightSpeedInLeft">
+    <dv-border-box-12 class="one-border animate__animated  animate__lightSpeedInLeft animate__delay-1s">
       <p class="title">
         <i class="el-icon-s-marketing"></i>
         <span>今日流量态势</span>
@@ -9,7 +9,7 @@
       <div ref="chartLine" class="chart-line"></div>
     </dv-border-box-12>
     <!-- dataV 滚动表格 -->
-    <dv-border-box-13 class="two-border animate__animated  animate__lightSpeedInLeft">
+    <dv-border-box-13 class="two-border animate__animated  animate__lightSpeedInLeft animate__delay-1s">
       <p class="title">
         <i class="el-icon-user"></i>
         <span>用户数据状态</span>

@@ -3,6 +3,9 @@
   <el-row class="header-top">
     <el-col :span="5">
       <dv-decoration-10 class="animation-line" :color="lineColor" />
+      <a class="home" @click="goHome">
+        <i class="el-icon-s-home"></i>
+      </a>
     </el-col>
     <el-col :span="3" class="col">
       <dv-decoration-8 :color="lineColor" class="decoration8" />
@@ -57,6 +60,13 @@ export default {
       // 关闭时间
       clearInterval(this.timeClear)
     }
+  },
+  methods: {
+    // 回到首页
+    goHome() {
+      console.log('222222222')
+      this.$router.push('/home')
+    }
   }
 }
 </script>
@@ -94,6 +104,14 @@ export default {
   .time{
     text-align: center;
     color: #47DAE8;
+  }
+  .home{
+    text-align: left;
+    margin-left: 20px;
+    color: #47DAE8;
+    font-size: 30px;
+    position: absolute;
+    z-index: 9999;
   }
 }
 .decoration6{

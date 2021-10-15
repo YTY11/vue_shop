@@ -1,7 +1,7 @@
 <template>
     <el-row class="Right">
       <!-- 雷达 3D地球 -->
-      <el-row class="one">
+      <el-row class="one animate__animated  animate__lightSpeedInRight animate__delay-1s ">
         <el-col :span="12">
           <p class="title">
             <i class="el-icon-connection"></i>
@@ -10,11 +10,11 @@
           <div ref="leiDaChars" class="lei-da"></div>
         </el-col>
         <el-col :span="12">
-          <div ref="earth" class="earth"></div>
+          <Earth/>
         </el-col>
       </el-row>
       <!-- 平均地区访问排布 胶囊图 -->
-      <el-row class="two">
+      <el-row class="two animate__animated  animate__lightSpeedInRight animate__delay-1s">
         <p class="title two-title">
           <i class="el-icon-s-operation"></i>
           <span>平均地区访问排布</span>
@@ -22,7 +22,7 @@
         <dv-capsule-chart :config="areaData" class="capsuleChart" />
       </el-row>
       <!-- 环形图与水纹图 -->
-      <el-row class="three">
+      <el-row class="three animate__animated  animate__lightSpeedInRight animate__delay-1s">
         <dv-border-box-13 class="border-box-13">
           <el-row class="round">
             <el-col :span="8">
@@ -52,13 +52,13 @@
 </template>
 
 <script>
-// 移入测试 3D 地球数据
-import earthData3D from '@/demoData/earthData3D'
-// 图片资源
-import bg from '@/assets/img/huanjing.jpg'
-import map from '@/assets/img/map.jpg'
+// 3D 转转地球
+import Earth from './Earth.vue'
 export default {
   name: 'Right',
+  components: {
+    Earth
+  },
   data() {
     return {
       // 雷达echarts 图数据
@@ -138,65 +138,6 @@ export default {
             }
           }
         ]
-      },
-      // 3D 旋转地球图 数据
-      earth3D: {
-        backgroundColor: '#000',
-        globe: {
-          environment: bg,
-          baseTexture: map,
-          // heightTexture: huiMap,
-
-          light: {
-            ambient: {
-              intensity: 1
-            },
-            main: {
-              intensity: 1
-            }
-          },
-          shading: 'realistic', // 着色效果，真实感渲染
-          realisticMaterial: {
-            // 真实感渲染配置
-            roughness: 0.5 // 材质的粗糙度
-          },
-          // postEffect: { //后处理特效配置
-          //   enable: true
-          // },
-
-          displacementScale: 0.04,
-          viewControl: {
-            autoRotate: true
-          }
-        },
-        series: {
-          type: 'lines3D',
-          effect: {
-            show: true,
-            trailWidth: 2,
-            trailLength: 0.15,
-            trailOpacity: 1,
-            trailColor: 'rgb(30, 30, 60)'
-          },
-          coordinateSystem: 'globe',
-
-          blendMode: 'lighter',
-
-          lineStyle: {
-            width: 1,
-            color: 'rgb(50, 50, 150)',
-            opacity: 0.1
-          },
-          viewControl: {
-            // 控制地球是否自转
-            autoRotateSpeed: 5,
-            autoRotate: true,
-            distance: 400, // 与视角的距离，值越大，图离视角越远，图越小
-            alpha: 20, // 绕x轴旋转的角度（上下旋转），增大，视角顺时针增大（向上）
-            beta: 20 // 绕y轴旋转的角度（左右旋转），增大，视角逆时针增大（向右）
-          },
-          data: earthData3D
-        }
       },
       // 存储charts
       myCharts: [],
@@ -425,7 +366,6 @@ export default {
   },
   mounted() {
     this.setLeiDaChars()
-    this.setEarth3DChars()
     this.setRoundChars('round1', this.roundChartsData1)
     this.setRoundChars('round2', this.roundChartsData2)
     this.setRoundChars('round3', this.roundChartsData3)
@@ -437,19 +377,12 @@ export default {
       // 新增的在最后所以可用(length - 1) 来获取
       this.myCharts[this.myCharts.length - 1].setOption(this.leiDaCharsData)
     },
-    // 设置3D 旋转地球
-    setEarth3DChars() {
-      this.myCharts.push(this.$echarts.init(this.$refs.earth))
-      // 新增的在最后所以可用(length - 1) 来获取
-      this.myCharts[this.myCharts.length - 1].setOption(this.earth3D)
-    },
     setRoundChars(ref, data) {
       this.myCharts.push(this.$echarts.init(this.$refs[ref]))
       // 新增的在最后所以可用(length - 1) 来获取
       this.myCharts[this.myCharts.length - 1].setOption(data)
     },
     // 监听页面变化 页面 重绘
-    // 因为页面变化时 水纹图会走形 无法单独对其重绘 因此页面变化时刷新整个页面
     resizeEcharts() {
       // this.$router.go()// 刷新页面
       this.myCharts.forEach(item => {
