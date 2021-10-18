@@ -112,6 +112,9 @@ export default {
     font-size: 30px;
     position: absolute;
     z-index: 9999;
+    &:hover{
+      cursor: pointer;
+    }
   }
 }
 .decoration6{
