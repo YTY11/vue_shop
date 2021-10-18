@@ -20,7 +20,7 @@
         <el-dropdown trigger="click">
           <div class="el-dropdown-link">
             <img src="~@/assets/img/user_icon.gif" alt="" />
-            <span>admin</span>
+            <span>{{ name }}</span>
             <i class="el-icon-arrow-down el-icon--right"></i>
           </div>
           <el-dropdown-menu slot="dropdown">
@@ -52,7 +52,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['isCollapse'])
+    ...mapGetters(['isCollapse', 'name'])
   },
   methods: {
     // 控制菜单栏开合
