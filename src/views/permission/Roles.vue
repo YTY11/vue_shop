@@ -258,6 +258,8 @@ export default {
           const { meta } = await addRole(this.addRoleInfo)
           if (meta.status === 201) {
             this.$message.success('添加成功')
+            // 重新获取数据
+            this.getListRoles()
           } else if (meta.status === 400) {
             return this.$message.info(meta.msg)
           } else {
