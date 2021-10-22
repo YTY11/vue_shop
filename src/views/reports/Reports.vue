@@ -16,7 +16,7 @@
         <Right />
       </el-col>
     </el-row>
-    <el-row class="row mobile-row">
+    <el-row v-else class="row mobile-row">
       <Earth/>
     </el-row>
   </dv-full-screen-container>
